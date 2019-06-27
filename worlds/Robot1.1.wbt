@@ -1,14 +1,154 @@
 #VRML_SIM R2019a utf8
 WorldInfo {
-  info [
-  ]
 }
 Viewpoint {
-  orientation -0.7 0.7 0.2 0.75
-  position 1.2 1.6 2.3
-
+  orientation -0.9994297436001799 -0.03366704588484368 0.00259183885812337 0.5384447893993624
+  position 0.6047555123033338 1.2557872330648805 1.8423653424798876
 }
 TexturedBackground {
 }
 TexturedBackgroundLight {
+}
+Floor {
+}
+Robot {
+  translation 0 0.1 0
+  rotation 1 0 0 0
+  children [
+    DEF GR_BODY Group {
+      children [
+        DEF ROBOT_BODY Shape {
+          appearance PBRAppearance {
+            baseColor 0.45098039215686275 0.8235294117647058 0.08627450980392157
+          }
+          geometry DEF G_BODY Box {
+            size 0.25 0.07 0.1
+          }
+        }
+        Transform {
+          translation 0.11 -0.05 0
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.9333333333333333 0.9333333333333333 0.9254901960784314
+                roughness 1
+                metalness 0
+              }
+              geometry Sphere {
+                radius 0.015
+              }
+            }
+          ]
+        }
+      ]
+    }
+    DEF ROBOT_BODY Shape {
+      appearance PBRAppearance {
+        baseColor 0.45098039215686275 0.8235294117647058 0.08627450980392157
+      }
+      geometry DEF G_BODY Box {
+        size 0.25 0.07 0.1
+      }
+    }
+    DEF WHEEL_1_JOINT HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 0 1
+        anchor -0.05 0 0.06
+      }
+      device [
+        PositionSensor {
+          name "encoder1"
+        }
+        RotationalMotor {
+          name "motor_right"
+        }
+      ]
+      endPoint DEF WHEEL1 Solid {
+        translation -0.04999777027220182 1.3850273653145077e-05 0.059999999999968155
+        rotation 0.9999996913644646 -0.0005555506518269843 -0.0005555487815132635 1.5708000025334103
+        children [
+          Shape {
+            appearance DEF A_WHEEL1 PBRAppearance {
+              baseColor 0 0 0
+              roughness 1
+              metalness 0
+            }
+            geometry DEF G_WHEEL Cylinder {
+              height 0.02
+              radius 0.075
+            }
+          }
+        ]
+        boundingObject USE G_WHEEL
+        physics Physics {
+        }
+      }
+    }
+    DEF WHEEL_2 HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 0 1
+        anchor -0.05 0 -0.06
+      }
+      device [
+        RotationalMotor {
+          name "motor_left"
+        }
+      ]
+      endPoint Solid {
+        translation -0.049997771746158416 1.3850505450352948e-05 -0.060000000000031826
+        rotation -0.9999996913646529 0.0005555506524007312 -0.0005555484420299349 1.5708006147337576
+        children [
+          Shape {
+            appearance USE A_WHEEL1
+            geometry USE G_WHEEL
+          }
+        ]
+        name "solid(1)"
+        boundingObject USE G_WHEEL
+        physics Physics {
+        }
+      }
+    }
+    DistanceSensor {
+      translation 0.125 0 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.9882352941176471 0.9137254901960784 0.30980392156862746
+          }
+          geometry Box {
+            size 0.02 0.01 0.01
+          }
+        }
+      ]
+      name "distance_sensor"
+      lookupTable [
+        0 0 0
+        0.02 0 0
+        11 1023 0
+      ]
+      resolution 1
+    }
+  ]
+  boundingObject USE GR_BODY
+  physics Physics {
+    density 500
+    centerOfMass [
+      0 0 0
+    ]
+  }
+  controller "Robot1"
+}
+Solid {
+  translation 1 0 0
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0 0
+      }
+      geometry Box {
+        size 0.2 0.30000000000000004 0.2
+      }
+    }
+  ]
 }
