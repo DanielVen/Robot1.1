@@ -137,7 +137,7 @@ Robot {
       0 0 0
     ]
   }
-  controller "Robot1"
+  controller "Robot1_1"
 }
 Solid {
   translation 1 0 0
@@ -151,4 +151,18 @@ Solid {
       }
     }
   ]
+}
+Solid {
+  translation 0.6 0 -0.3
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.20392156862745098 0.396078431372549 0.6431372549019608
+      }
+      geometry Box {
+        size 0.30000000000000004 0.30000000000000004 0.2
+      }
+    }
+  ]
+  name "solid(1)"
 }
