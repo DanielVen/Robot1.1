@@ -51,7 +51,7 @@ enum {
        wb_motor_set_velocity(wheels[1], noVel);
     }
 
-     int checkForObstacles (WbDeviceTag dist_sensor) {
+     int LookForObstacles (WbDeviceTag dist_sensor) {
        double distance = wb_distance_sensor_get_value(dist_sensor);
 
        if (distance > OBSTACLE_DISTANCE)
@@ -119,7 +119,7 @@ int main(int argc, char **argv)
    */
   while (wb_robot_step(TIME_STEP) != -1) {
     if (robot_state == GO) {
-      ds_state = checkForObstacles(dist_sensor);
+      ds_state = LookForObstacles(dist_sensor);
 
       if (ds_state == FREEWAY) {
         goRobot(wheels, velocity);
