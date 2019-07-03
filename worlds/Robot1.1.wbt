@@ -2,8 +2,8 @@
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.9994297436001799 -0.03366704588484368 0.00259183885812337 0.5384447893993624
-  position 0.6047555123033338 1.2557872330648805 1.8423653424798876
+  orientation -0.9891744862388704 -0.14618333628954658 -0.012816706492872358 0.3924158059794414
+  position -0.2874746476621554 1.9999994029667882 4.346233237867369
 }
 TexturedBackground {
 }
@@ -99,7 +99,7 @@ Robot {
       ]
       endPoint Solid {
         translation -0.049997771746158416 1.3850505450352948e-05 -0.060000000000031826
-        rotation -0.999999691364653 0.0005555506524007313 -0.000555548442029935 1.5708006147337576
+        rotation -0.9999996913646529 0.0005555506524007312 -0.0005555484420299349 1.5708006147337576
         children [
           Shape {
             appearance USE A_WHEEL1
@@ -143,7 +143,7 @@ Robot {
   controller "Robot1_1"
 }
 Solid {
-  translation 1 0 0
+  translation 1.11 0.15 0
   children [
     Shape {
       appearance PBRAppearance {
@@ -156,16 +156,36 @@ Solid {
   ]
 }
 Solid {
-  translation 0.6 0 -0.3
+  translation 0.0999999999999996 0.15 1.400000000000001
   children [
     Shape {
       appearance PBRAppearance {
         baseColor 0.20392156862745098 0.396078431372549 0.6431372549019608
       }
-      geometry Box {
+      geometry DEF BOX2 Box {
         size 0.30000000000000004 0.30000000000000004 0.2
       }
     }
   ]
   name "solid(1)"
+  boundingObject USE BOX2
+  physics Physics {
+  }
+}
+Solid {
+  translation -1.3500000000000014 0.15 0.9000000000000006
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.45098039215686275 0.8235294117647058 0.08627450980392157
+      }
+      geometry DEF BOX2 Box {
+        size 0.30000000000000004 0.30000000000000004 0.2
+      }
+    }
+  ]
+  name "solid(2)"
+  boundingObject USE BOX2
+  physics Physics {
+  }
 }
