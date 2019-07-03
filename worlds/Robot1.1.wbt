@@ -90,13 +90,16 @@ Robot {
         anchor -0.05 0 -0.06
       }
       device [
+        PositionSensor {
+          name "encoder2"
+        }
         RotationalMotor {
           name "motor_left"
         }
       ]
       endPoint Solid {
         translation -0.049997771746158416 1.3850505450352948e-05 -0.060000000000031826
-        rotation -0.9999996913646529 0.0005555506524007312 -0.0005555484420299349 1.5708006147337576
+        rotation -0.999999691364653 0.0005555506524007313 -0.000555548442029935 1.5708006147337576
         children [
           Shape {
             appearance USE A_WHEEL1
